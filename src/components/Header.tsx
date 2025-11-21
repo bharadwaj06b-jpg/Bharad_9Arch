@@ -58,14 +58,18 @@ export default function Header() {
 
   return (
     <>
+      {/* Full Header - Visible when not scrolled */}
       <motion.header
         initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-          isScrolled
-            ? 'bg-background shadow-lg'
-            : 'bg-background/95 backdrop-blur-sm'
-        }`}
+        animate={{
+          y: isScrolled ? -100 : 0,
+          opacity: isScrolled ? 0 : 1
+        }}
+        transition={{
+          opacity: { duration: 0.3 },
+          y: { duration: 0.3 }
+        }}
+        className="fixed top-0 left-0 right-0 z-40 bg-background/95 backdrop-blur-sm"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <div className="flex flex-col items-center space-y-6">
@@ -145,6 +149,76 @@ export default function Header() {
         </div>
       </motion.header>
 
+      {/* Compact Navigation Bar - Visible when scrolled */}
+      <motion.header
+        initial={{ y: -100 }}
+        animate={{
+          y: isScrolled ? 0 : -100,
+          opacity: isScrolled ? 1 : 0
+        }}
+        transition={{
+          y: { duration: 0.3 },
+          opacity: { duration: 0.2, delay: isScrolled ? 0.1 : 0 }
+        }}
+        className="fixed top-0 left-0 right-0 z-40 bg-background shadow-lg"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex items-center justify-center">
+            {/* Compact Navigation Menu */}
+            <nav className="hidden md:flex items-center space-x-8">
+              {navItems.map((item, index) => (
+                <motion.button
+                  key={item.id}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{
+                    opacity: isScrolled ? 1 : 0,
+                    y: isScrolled ? 0 : -10
+                  }}
+                  transition={{
+                    delay: isScrolled ? 0.2 + (index * 0.05) : 0,
+                    duration: 0.3
+                  }}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`relative text-xs font-medium uppercase tracking-[0.15em] transition-colors ${
+                    activeSection === item.id
+                      ? 'text-accent'
+                      : 'text-foreground hover:text-accent'
+                  }`}
+                  whileHover={{ y: -2 }}
+                >
+                  {item.label}
+                  {activeSection === item.id && (
+                    <motion.div
+                      layoutId="activeTab"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-accent"
+                      initial={false}
+                      transition={{
+                        type: "spring",
+                        stiffness: 500,
+                        damping: 30
+                      }}
+                    />
+                  )}
+                </motion.button>
+              ))}
+            </nav>
+
+            {/* Mobile Menu Button - Compact */}
+            <motion.button
+              whileTap={{ scale: 0.9 }}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden p-2 rounded-md text-foreground hover:text-accent hover:bg-accent/10 transition-colors"
+            >
+              {isMobileMenuOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
+            </motion.button>
+          </div>
+        </div>
+      </motion.header>
+
       {/* Mobile Navigation - Centered Dropdown */}
       <AnimatePresence>
         {isMobileMenuOpen && (
@@ -153,7 +227,9 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed top-32 left-1/2 transform -translate-x-1/2 z-50 w-80 max-w-[90vw] bg-background shadow-xl md:hidden rounded-lg border border-border"
+            className={`fixed left-1/2 transform -translate-x-1/2 z-50 w-80 max-w-[90vw] bg-background shadow-xl md:hidden rounded-lg border border-border ${
+              isScrolled ? 'top-16' : 'top-32'
+            }`}
           >
             <div className="p-6">
               <div className="flex items-center justify-between mb-6">
