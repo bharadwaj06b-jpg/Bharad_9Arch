@@ -3,69 +3,55 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
-import { Eye } from 'lucide-react'
 
 export default function Projects() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.3 })
+  const isInView = useInView(ref, { once: true, amount: 0.2 })
   const [hoveredProject, setHoveredProject] = useState<number | null>(null)
 
+  // Premium projects for magazine-style layout (reduced to 6 for luxury feel)
   const projects = [
     {
       id: 1,
+      number: "01",
       title: "Modern Villa Design",
-      category: "Residential",
-      description: "Contemporary villa with open spaces and natural lighting",
+      description: "Contemporary luxury villa featuring open-concept living spaces, floor-to-ceiling glass walls, and seamless integration with tropical landscape architecture.",
       image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=2070&auto=format&fit=crop"
     },
     {
       id: 2,
+      number: "02",
       title: "Commercial Complex",
-      category: "Commercial",
-      description: "Multi-story commercial building with sustainable design",
+      description: "Sustainable mixed-use development with innovative green roof systems, solar panel integration, and biophilic design principles.",
       image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
     },
     {
       id: 3,
+      number: "03",
       title: "Interior Living Space",
-      category: "Interior Design",
-      description: "Modern interior design with minimalist aesthetics",
+      description: "Minimalist luxury interior combining natural materials, custom millwork, and intelligent lighting systems for sophisticated urban living.",
       image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop"
     },
     {
       id: 4,
-      title: "Office Building",
-      category: "Commercial",
-      description: "Professional office space with collaborative areas",
+      number: "04",
+      title: "Corporate Headquarters",
+      description: "State-of-the-art office complex featuring collaborative workspaces, wellness amenities, and advanced environmental controls.",
       image: "https://images.unsplash.com/photo-1497366216548-375f70e05f55?q=80&w=2069&auto=format&fit=crop"
     },
     {
       id: 5,
-      title: "Luxury Apartment",
-      category: "Residential",
-      description: "High-end apartment with premium finishes and amenities",
+      number: "05",
+      title: "Luxury Residence",
+      description: "Bespoke penthouse residence with panoramic views, private elevator access, and integrated smart home technology throughout.",
       image: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?q=80&w=2070&auto=format&fit=crop"
     },
     {
       id: 6,
-      title: "Retail Interior",
-      category: "Interior Design",
-      description: "Modern retail space with customer experience focus",
+      number: "06",
+      title: "Boutique Retail Space",
+      description: "High-end retail environment with custom architectural elements, premium materials, and experiential customer journey design.",
       image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=2069&auto=format&fit=crop"
-    },
-    {
-      id: 7,
-      title: "Eco-friendly Home",
-      category: "Residential",
-      description: "Sustainable residence with green building practices",
-      image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?q=80&w=2070&auto=format&fit=crop"
-    },
-    {
-      id: 8,
-      title: "Restaurant Design",
-      category: "Interior Design",
-      description: "Contemporary restaurant with ambiance and functionality",
-      image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop"
     }
   ]
 
@@ -74,26 +60,27 @@ export default function Projects() {
     visible: {
       opacity: 1,
       transition: {
-        duration: 0.6,
-        staggerChildren: 0.1,
+        duration: 0.8,
+        staggerChildren: 0.2,
       },
     },
   }
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 50 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.8,
+        ease: "easeOut",
       },
     },
   }
 
   return (
-    <section id="projects" ref={ref} className="py-20 md:py-32 bg-card">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" ref={ref} className="py-32 bg-background">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -102,81 +89,102 @@ export default function Projects() {
           {/* Section Header */}
           <motion.div
             variants={itemVariants}
-            className="text-center mb-16"
+            className="text-center mb-20"
           >
-            <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-4">
-              PROJECTS
+            <h2 className="text-5xl md:text-6xl font-heading font-bold text-foreground mb-6 tracking-[0.05em]">
+              FEATURED PROJECTS
             </h2>
-            <div className="w-24 h-1 bg-accent mx-auto" />
+            <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
+              We transform architectural visions into reality through meticulous planning, innovative design solutions, and uncompromising attention to detail.
+            </p>
+            <div className="flex justify-end">
+              <motion.button
+                whileHover={{ scale: 1.05, x: 5 }}
+                whileTap={{ scale: 0.95 }}
+                className="group inline-flex items-center gap-2 px-6 py-3 border border-foreground text-foreground font-medium text-sm uppercase tracking-[0.15em] hover:bg-foreground hover:text-background transition-all duration-300"
+              >
+                SEE MORE
+                <span className="transform transition-transform duration-300 group-hover:translate-x-1">→</span>
+              </motion.button>
+            </div>
           </motion.div>
 
-          {/* Projects Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Magazine-Style Projects */}
+          <div className="space-y-24">
             {projects.map((project, index) => (
               <motion.div
                 key={project.id}
                 variants={itemVariants}
-                className="group relative overflow-hidden rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer bg-background"
-                onMouseEnter={() => setHoveredProject(project.id)}
-                onMouseLeave={() => setHoveredProject(null)}
-                whileHover={{
-                  scale: 1.02,
-                  transition: { duration: 0.3 }
-                }}
+                className={`grid grid-cols-1 lg:grid-cols-12 gap-12 items-center ${
+                  index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
+                }`}
               >
-                {/* Image */}
-                <div className="aspect-square overflow-hidden">
-                  <motion.img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                    animate={{
-                      scale: hoveredProject === project.id ? 1.1 : 1,
-                    }}
-                    transition={{ duration: 0.5, ease: "easeOut" }}
-                  />
+                {/* Image Column - 60% width (7 columns) */}
+                <div className={`lg:col-span-7 ${index % 2 === 1 ? 'lg:col-start-6' : ''}`}>
+                  <motion.div
+                    className="relative overflow-hidden rounded-lg"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                    onMouseEnter={() => setHoveredProject(project.id)}
+                    onMouseLeave={() => setHoveredProject(null)}
+                  >
+                    <div className="aspect-[4/5] lg:aspect-[3/2] overflow-hidden bg-muted">
+                      <motion.img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover"
+                        animate={{
+                          scale: hoveredProject === project.id ? 1.08 : 1,
+                        }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                      />
+                    </div>
+
+                    {/* Subtle overlay on hover */}
+                    <motion.div
+                      animate={{
+                        opacity: hoveredProject === project.id ? 1 : 0,
+                      }}
+                      transition={{ duration: 0.4 }}
+                      className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none"
+                    />
+                  </motion.div>
                 </div>
 
-                {/* Overlay */}
-                <motion.div
-                  animate={{
-                    opacity: hoveredProject === project.id ? 1 : 0,
-                  }}
-                  transition={{ duration: 0.3 }}
-                  className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/50 to-transparent flex flex-col justify-end p-6"
-                >
-                  {/* Category */}
-                  <div className="text-xs font-medium text-accent mb-2 uppercase tracking-wider">
-                    {project.category}
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="text-lg font-heading font-semibold text-white mb-2">
-                    {project.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-sm text-white/90 mb-4 line-clamp-2">
-                    {project.description}
-                  </p>
-
-                  {/* View Button */}
+                {/* Text Column - 40% width (5 columns) */}
+                <div className={`lg:col-span-5 space-y-6 ${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
                   <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{
-                      opacity: hoveredProject === project.id ? 1 : 0,
-                      y: hoveredProject === project.id ? 0 : 10,
-                    }}
-                    transition={{ duration: 0.3, delay: 0.1 }}
-                    className="flex items-center gap-2 text-white text-sm font-medium"
+                    initial={{ opacity: 0, x: index % 2 === 1 ? -30 : 30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
                   >
-                    <Eye className="w-4 h-4" />
-                    View Project
-                  </motion.div>
-                </motion.div>
+                    {/* Project Number */}
+                    <div className="text-sm font-bold text-accent uppercase tracking-[0.15em] mb-2">
+                      {project.number}
+                    </div>
 
-                {/* Hover Border */}
-                <div className="absolute inset-0 rounded-2xl border-2 border-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                    {/* Project Title */}
+                    <h3 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6 leading-tight tracking-[0.02em]">
+                      {project.title}
+                    </h3>
+
+                    {/* Project Description */}
+                    <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-8">
+                      {project.description}
+                    </p>
+
+                    {/* View Project Link */}
+                    <motion.a
+                      href="#"
+                      className="inline-flex items-center gap-2 text-foreground font-medium text-sm uppercase tracking-[0.15em] hover:text-accent transition-colors duration-300 group"
+                      whileHover={{ x: 5 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      View Project
+                      <span className="transform transition-transform duration-300 group-hover:translate-x-2">→</span>
+                    </motion.a>
+                  </motion.div>
+                </div>
               </motion.div>
             ))}
           </div>
