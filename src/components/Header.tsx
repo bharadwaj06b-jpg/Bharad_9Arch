@@ -152,7 +152,7 @@ export default function Header() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
+            transition={{ duration: 0.3 }}
             className="fixed top-32 left-1/2 transform -translate-x-1/2 z-50 w-80 max-w-[90vw] bg-background shadow-xl md:hidden rounded-lg border border-border"
           >
             <div className="p-6">

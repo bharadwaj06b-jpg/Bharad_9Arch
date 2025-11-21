@@ -20,7 +20,7 @@ export default function Preloader() {
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
+          transition={{ duration: 0.6 }}
           className="fixed inset-0 z-50 flex items-center justify-center bg-foreground"
         >
           <div className="relative">
