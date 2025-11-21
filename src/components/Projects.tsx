@@ -136,7 +136,7 @@ export default function Projects() {
                         animate={{
                           scale: hoveredProject === project.id ? 1.08 : 1,
                         }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
                       />
                     </div>
 
