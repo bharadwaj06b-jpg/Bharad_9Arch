@@ -10,11 +10,11 @@ export default function Header() {
   const [activeSection, setActiveSection] = useState('home')
 
   const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About Us' },
-    { id: 'services', label: 'Services' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'contact', label: 'Contact Us' }
+    { id: 'home', label: 'HOME' },
+    { id: 'projects', label: 'PROJECTS' },
+    { id: 'about', label: 'ABOUT' },
+    { id: 'services', label: 'SERVICES' },
+    { id: 'contact', label: 'CONTACT' }
   ]
 
   useEffect(() => {
