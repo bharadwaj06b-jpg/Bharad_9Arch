@@ -65,7 +65,6 @@ export default function Workflow() {
       transition: {
         duration: 1.2,
         delay: 0.5,
-        ease: "easeOut",
       },
     },
   }
