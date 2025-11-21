@@ -128,8 +128,7 @@ export default function Workflow() {
                         transition={{
                           duration: 0.6,
                           delay: 0.8 + (index * 0.1),
-                          ease: "easeOut"
-                        }}
+                                                  }}
                       >
                         <span className="text-foreground font-bold text-lg">
                           {step.number}
@@ -196,8 +195,7 @@ export default function Workflow() {
                           transition={{
                             duration: 0.6,
                             delay: 0.8 + (index * 0.1),
-                            ease: "easeOut"
-                          }}
+                                                      }}
                         >
                           <span className="text-foreground font-bold text-xs">
                             {step.number}
@@ -240,8 +238,7 @@ export default function Workflow() {
                     transition={{
                       duration: 0.4,
                       delay: 1.0 + (i * 0.1),
-                      ease: "easeOut"
-                    }}
+                                          }}
                   />
                 ))}
               </div>
