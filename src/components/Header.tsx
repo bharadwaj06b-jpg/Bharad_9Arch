@@ -62,9 +62,8 @@ export default function Header() {
       <motion.header
         initial={{ y: -100 }}
         animate={{
-          y: 0,
-          opacity: isScrolled ? 0 : 1,
-          y: isScrolled ? -100 : 0
+          y: isScrolled ? -100 : 0,
+          opacity: isScrolled ? 0 : 1
         }}
         transition={{
           opacity: { duration: 0.3 },
