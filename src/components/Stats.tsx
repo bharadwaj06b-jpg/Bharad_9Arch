@@ -123,8 +123,7 @@ export default function Stats() {
                     transition={{
                       duration: 0.8,
                       delay: index * 0.1 + 0.3,
-                      ease: "easeOut"
-                    }}
+                      }}
                   >
                     {Math.floor(counters[index])}
                     <span className="text-5xl md:text-6xl lg:text-7xl">{stat.suffix}</span>
@@ -138,8 +137,7 @@ export default function Stats() {
                     transition={{
                       duration: 0.6,
                       delay: index * 0.1 + 0.8,
-                      ease: "easeOut"
-                    }}
+                      }}
                   />
                 </div>
 
@@ -151,7 +149,6 @@ export default function Stats() {
                   transition={{
                     duration: 0.6,
                     delay: index * 0.1 + 0.6,
-                    ease: "easeOut"
                   }}
                 >
                   {stat.label}
@@ -165,7 +162,6 @@ export default function Stats() {
                   transition={{
                     duration: 0.8,
                     delay: index * 0.1 + 1.0,
-                    ease: "easeOut"
                   }}
                 />
               </motion.div>
