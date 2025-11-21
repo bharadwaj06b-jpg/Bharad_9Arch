@@ -148,8 +148,7 @@ export default function Testimonials() {
                         transition={{
                           duration: 0.3,
                           delay: 0.3 + (i * 0.1),
-                          ease: "easeOut"
-                        }}
+                                                  }}
                       />
                     ))}
                   </div>
