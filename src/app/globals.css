@@ -78,3 +78,328 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent);
 }
+
+/* Glassmorphism Effects */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-effect-dark {
+  background: rgba(14, 14, 14, 0.8);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Premium Animations */
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes textReveal {
+  from {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0% 0 0);
+  }
+}
+
+@keyframes floatAnimation {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(214, 167, 77, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(214, 167, 77, 0.6);
+  }
+}
+
+@keyframes rotateBorder {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Animation Classes */
+.animate-slide-in-top {
+  animation: slideInFromTop 0.8s ease-out forwards;
+}
+
+.animate-slide-in-bottom {
+  animation: slideInFromBottom 0.8s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInFromLeft 0.8s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInFromRight 0.8s ease-out forwards;
+}
+
+.animate-fade-scale {
+  animation: fadeInScale 0.8s ease-out forwards;
+}
+
+.animate-text-reveal {
+  animation: textReveal 1s ease-out forwards;
+}
+
+.animate-float {
+  animation: floatAnimation 6s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+/* Luxury Spacing Utilities */
+.space-y-80 {
+  margin-top: 20rem;
+  margin-bottom: 20rem;
+}
+
+.space-y-96 {
+  margin-top: 24rem;
+  margin-bottom: 24rem;
+}
+
+/* Premium Typography Enhancements */
+.luxury-heading {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+}
+
+.luxury-subheading {
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.luxury-body {
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+}
+
+/* Premium Hover Effects */
+.luxury-hover {
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.luxury-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Premium Grid Systems */
+.luxury-grid {
+  display: grid;
+  gap: 4rem;
+}
+
+.luxury-grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.luxury-grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.luxury-grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+  .luxury-grid-2,
+  .luxury-grid-3,
+  .luxury-grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .space-y-80,
+  .space-y-96 {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .luxury-grid-3,
+  .luxury-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Premium Scroll Indicator */
+.scroll-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent) var(--scroll-progress, 0%), transparent var(--scroll-progress, 0%));
+  z-index: 1000;
+  transform-origin: left;
+}
+
+/* Premium Selection Styling */
+::selection {
+  background: var(--accent);
+  color: var(--foreground);
+}
+
+::-moz-selection {
+  background: var(--accent);
+  color: var(--foreground);
+}
+
+/* Premium Focus States */
+.focus-luxury:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  box-shadow: 0 0 0 4px rgba(214, 167, 77, 0.1);
+}
+
+/* Premium Loading States */
+.loading-skeleton {
+  background: linear-gradient(90deg, var(--muted) 25%, rgba(255, 255, 255, 0.1) 50%, var(--muted) 75%);
+  background-size: 200% 100%;
+  animation: loading-skeleton 2s infinite;
+}
+
+@keyframes loading-skeleton {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Premium Image Filters */
+.img-luxury-grayscale {
+  filter: grayscale(100%) contrast(1.2);
+  transition: filter 0.6s ease;
+}
+
+.img-luxury-grayscale:hover {
+  filter: grayscale(0%) contrast(1.1);
+}
+
+.img-luxury-sepia {
+  filter: sepia(30%) contrast(1.1);
+  transition: filter 0.6s ease;
+}
+
+.img-luxury-sepia:hover {
+  filter: sepia(0%) contrast(1);
+}
+
+/* Premium Background Patterns */
+.pattern-dots {
+  background-image: radial-gradient(circle, var(--muted) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.pattern-grid {
+  background-image:
+    linear-gradient(var(--muted) 1px, transparent 1px),
+    linear-gradient(90deg, var(--muted) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.pattern-diagonal {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(200, 200, 200, 0.1) 10px,
+    rgba(200, 200, 200, 0.1) 20px
+  );
+}
+
+/* Performance Optimizations */
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
